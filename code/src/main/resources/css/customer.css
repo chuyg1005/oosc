@@ -1,0 +1,8 @@
+.button:hover {
+    -fx-font-weight: bold;
+    -fx-opacity: 0.8;
+}
+
+/*.table-view {*/
+/*    -fx-text-alignment: right;*/
+/*}*/

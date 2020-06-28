@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.CartDao">
+    <select id="findByCustomer" parameterType="java.lang.String" resultType="bean.CartItem">
+        SELECT tc.pname AS pName, tc.gname AS gName, tg.price, tc.amount
+        FROM t_cart tc
+            JOIN t_goods tg on tc.gname = tg.gname AND tc.pname = tg.pname
+    </select>
+
+    <delete id="clearByCustomer" parameterType="java.lang.String">
+        DELETE FROM t_cart WHERE cname = #{name}
+    </delete>
+
+    <delete id="deleteByKey">
+        DELETE FROM t_cart
+            WHERE cname = #{arg0} AND pname = #{arg1} AND gname = #{arg2}
+    </delete>
+
+    <update id="updateAmount">
+        UPDATE t_cart
+            SET amount = #{arg3}
+            WHERE cname = #{arg0} AND pname = #{arg1} AND gname = #{arg2}
+    </update>
+
+    <insert id="addItem">
+        INSERT INTO t_cart(cname, pname, gname, amount)
+            VALUES(#{arg0}, #{arg1.pName}, #{arg1.gName}, #{arg1.amount})
+    </insert>
+</mapper>

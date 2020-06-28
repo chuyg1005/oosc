@@ -1,0 +1,4 @@
+.button:hover {
+    -fx-font-weight: bold;
+    -fx-opacity: 0.8;
+}

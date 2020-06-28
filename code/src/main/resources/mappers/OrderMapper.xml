@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.OrderDao">
+    <insert id="addItem" parameterType="bean.OrderItem">
+        INSERT INTO t_order(cname, pname, gname, price, amount, total, date)
+        VALUES(#{cName}, #{pName}, #{gName}, #{price}, #{amount}, #{total}, #{date})
+    </insert>
+
+    <select id="findByProducer" parameterType="java.lang.String" resultType="bean.OrderItem">
+        SELECT cname AS cName, pname AS pName, gname AS gName, price, amount, total, date
+        FROM t_order
+        WHERE pname = #{name};
+    </select>
+
+    <select id="findByCustomer" parameterType="java.lang.String" resultType="bean.OrderItem">
+        SELECT cname AS cName, pname AS pName, gname AS gName, price, amount, total, date
+        FROM t_order
+        WHERE cname = #{name};
+    </select>
+
+    <select id="findNDays" parameterType="java.lang.Integer" resultType="bean.OrderItem">
+        SELECT cname AS cName, pname AS pName, gname AS gName, price, amount, total, date
+        FROM t_order
+        WHERE DATE_SUB(CURDATE(), INTERVAL #{n} DAY) &lt;= date(date)
+    </select>
+</mapper>

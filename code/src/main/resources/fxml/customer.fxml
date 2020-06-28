@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="439.0" prefWidth="612.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label fx:id="userName" text="张三" />
+            <Label text="，欢迎使用本外卖系统">
+               <HBox.margin>
+                  <Insets right="150.0" />
+               </HBox.margin>
+            </Label>
+            <Button mnemonicParsing="false" onAction="#logout" text="注销">
+               <HBox.margin>
+                  <Insets left="150.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="404.0" prefWidth="612.0" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab text="商品浏览">
+               <content>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <HBox prefHeight="316.0" prefWidth="596.0">
+                           <children>
+                              <ListView fx:id="shopTable" prefHeight="309.0" prefWidth="150.0" />
+                              <TableView fx:id="itemTable" editable="true" prefHeight="309.0" prefWidth="452.0">
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                           </children>
+                        </HBox>
+                        <AnchorPane prefHeight="49.0" prefWidth="612.0">
+                           <children>
+                              <Button layoutX="452.0" layoutY="6.0" mnemonicParsing="false" onAction="#updateCart" text="添加到购物车" />
+                              <Button layoutX="91.0" layoutY="6.0" mnemonicParsing="false" text="刷新" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+               </content>
+            </Tab>
+            <Tab text="购物车">
+               <content>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <TableView fx:id="cartTable" editable="true" prefHeight="300.0" prefWidth="600.0">
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                        <HBox alignment="CENTER" prefHeight="61.0" prefWidth="600.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#clearCart" text="清空购物车">
+                                 <HBox.margin>
+                                    <Insets right="50.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#deleteCartItems" text="删除">
+                                 <HBox.margin>
+                                    <Insets left="50.0" right="50.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#calculate" text="结算">
+                                 <HBox.margin>
+                                    <Insets left="50.0" right="50.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#updateCartTable" text="刷新">
+                                 <HBox.margin>
+                                    <Insets left="50.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+            </Tab>
+            <Tab text="历史订单">
+               <content>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <TableView fx:id="orderTable" prefHeight="327.0" prefWidth="612.0">
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                        <AnchorPane prefHeight="39.0" prefWidth="612.0">
+                           <children>
+                              <Button layoutX="508.0" layoutY="5.0" mnemonicParsing="false" onAction="#updateOrderTable" text="刷新" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+</VBox>

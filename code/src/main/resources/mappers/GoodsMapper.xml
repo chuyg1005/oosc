@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.GoodsDao">
+    <select id="findByProvider" parameterType="java.lang.String" resultType="bean.Item">
+        SELECT gname AS name, price, description
+        FROM t_goods
+        WHERE pname = #{name}
+    </select>
+
+    <insert id="addItem">
+        INSERT INTO t_goods(gname, pname, price, description)
+        VALUES(#{arg1.name}, #{arg0}, #{arg1.price}, #{arg1.description})
+    </insert>
+</mapper>

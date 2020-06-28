@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.CustomerDao">
+    <select id="findCustomer" resultType="user.Customer">
+        SELECT * FROM t_customer WHERE name = #{arg0} AND password = #{arg1}
+    </select>
+    <insert id="addCustomer" parameterType="user.Customer">
+        INSERT INTO t_customer(name, password) VALUES(#{name}, #{password})
+    </insert>
+</mapper>
